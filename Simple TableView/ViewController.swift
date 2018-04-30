@@ -29,8 +29,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let identifier = "Cell"
         let cell = myTableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
-
+        
+        // cell에 image 넣기
+        let myImage = UIImage(named:"cat.png")
+        cell.imageView?.image = myImage
+        
+        // cell에 text 넣기
         cell.textLabel?.text = animals[indexPath.row]
+        
         return cell
     }
 
