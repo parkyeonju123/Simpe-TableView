@@ -12,6 +12,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     @IBOutlet weak var myTableView: UITableView!
     var animals = ["Cow", "Pig", "Dog", "Rabbit", "Bird"]
+    var year = ["3", "5", "2", "4", "5"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -36,6 +38,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         // cell에 text 넣기
         cell.textLabel?.text = animals[indexPath.row]
+        
+        // cell에 detailText 넣기
+        cell.detailTextLabel?.text = year[indexPath.row]
         
         return cell
     }
