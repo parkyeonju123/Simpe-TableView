@@ -83,7 +83,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let alert = UIAlertController(title: "동물농장", message: "\(myAnimal)", preferredStyle: .actionSheet)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let okAction = UIAlertAction(title: "확인", style: .default){(myAction: UIAlertAction) -> Void in
-            self.view.backgroundColor = UIColor.green
+            //alertController생성
+            print("새로운 ActionController 생성")
         }
         alert.addAction(cancelAction)
         alert.addAction(okAction)
