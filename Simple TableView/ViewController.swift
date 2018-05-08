@@ -12,7 +12,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     @IBOutlet weak var myTableView: UITableView!
     var animals = ["Cow", "Pig", "Dog", "Rabbit", "Bird"]
-    var year = ["3", "5", "2", "4", "5"]
+    var country = ["KOR", "USA", "Japan", "Africa", "China"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,8 +24,27 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     // UITableViewDataSoure
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return animals.count
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0 {
+            return "\(section) Setction Header"
+        } else {
+            return "\(section) Section Header"
+        }
+    }
+    func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        if section == 0 {
+            return "\(section) Section Footer"
+        } else {
+            return "\(section) Section Footer"
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -40,10 +59,26 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         cell.textLabel?.text = animals[indexPath.row]
         
         // cell에 detailText 넣기
-        cell.detailTextLabel?.text = year[indexPath.row]
+        cell.detailTextLabel?.text = country[indexPath.row]
         
         return cell
     }
-
+    
+    // cell을 selcet 했을때
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let mySection = indexPath.section
+        let myRow = indexPath.row
+        
+        let myAnimal = animals[indexPath.row]
+        
+        print("I selected \(mySection) Section \(myRow) Row")
+        print(myAnimal)
+        
+        let alert = UIAlertController(title: myAnimal, message: "Section \(mySection), Row \(myRow)", preferredStyle: .actionSheet)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addAction(cancelAction)
+        present(alert, animated: true, completion: nil)
+    }
 }
+
 
