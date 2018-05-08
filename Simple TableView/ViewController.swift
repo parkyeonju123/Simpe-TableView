@@ -84,13 +84,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let okAction = UIAlertAction(title: "확인", style: .default){(myAction: UIAlertAction) -> Void in
             //alertController생성
-            print("새로운 ActionController 생성")
+            let blert = UIAlertController(title: myAnimal, message: "\(mySection)/\(myRow)", preferredStyle: .alert)
+             let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            blert.addAction(cancel)
+            self.present(blert, animated: true, completion: nil)
         }
         alert.addAction(cancelAction)
         alert.addAction(okAction)
         present(alert, animated: true, completion: nil)
     }
-    
 }
 
 
